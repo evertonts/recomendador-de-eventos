@@ -1,0 +1,5 @@
+Recomendador de eventos
+
+Para começar o projeto é necessária a gem bundler. Depois execute:
+
+bundle install
