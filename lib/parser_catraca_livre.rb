@@ -30,4 +30,3 @@ class ParserCatracaLivre
 	end
 end
 
-
