@@ -1,0 +1,33 @@
+require 'rss'
+require 'open-uri'
+require 'nokogiri'
+
+class ParserCatracaLivre
+	
+	def initialize(url = "http://catracalivre.com.br/feed")
+		@url = url
+	end
+	
+	def parse()
+		open(@url) do |rss|
+			feed = RSS::Parser.parse(rss)
+			feed.items.each do |item|  
+				event = Event.new
+				event.title = item.title
+				event.description = item.description
+				event.url = item.link
+			
+				html = Nokogiri::HTML(item.content_encoded)
+		
+				html.css('.quando').each do |a|
+					a.children.each do |c|
+						event.date = c.content
+					end
+				end
+				event.save!
+			end
+		end
+	end
+end
+
+
