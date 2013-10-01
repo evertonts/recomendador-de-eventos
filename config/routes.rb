@@ -53,4 +53,10 @@ RecomendadorEventos::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+
+  # Exemplo de chamada usando o curl
+  # curl -X PUT -d 'url=http://catracalivre.com.br/feed' http://localhost:3000/repositories/catraca_livre/fetch_and_parse
+  put 'repositories/:selector/fetch_and_parse', to: 'repositories#fetch_and_parse', defaults: { format: 'json' }
+
 end
