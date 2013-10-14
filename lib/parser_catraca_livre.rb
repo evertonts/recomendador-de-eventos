@@ -5,20 +5,9 @@ require 'date'
 
 class ParserCatracaLivre
 	
-	def initialize(url = "http://catracalivre.com.br/feed")
-		@url = url
-	  @redis = redis
-		@redis_key = 'catraca_livre_last_success'
+	def initialize()
+		@url = "http://catracalivre.com.br/feed"
 	end
-
-  def blocked()
-    date = @redis.get(@redis_key)
-    not date.nil? and (Date.today - Date.parse(date)).to_i > 0
-	end
-
-  def update_redis()
-    @redis.set(@redis_key, Date.today)
-  end
 
 	def parse()
 		open(@url) do |rss|
@@ -38,7 +27,6 @@ class ParserCatracaLivre
 				event.save!
 			end
 		end
-    self.update_redis
 	end
 end
 

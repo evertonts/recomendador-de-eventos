@@ -1,4 +1,3 @@
-
 class RepositoriesController < ActionController::Base
   respond_to :json
 
