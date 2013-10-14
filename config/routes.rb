@@ -1,8 +1,11 @@
 RecomendadorEventos::Application.routes.draw do
 	get '/login', :to => 'sessions#new', :as => :login
-	match '/auth/:provider/callback', :to => 'sessions#create', via:[:get]
+	#match '/auth/:provider/callback', :to => 'sessions#create', via:[:get]
+	match '/auth/:provider/callback', :to => 'sessions#callback', via:[:get]
 	match '/auth/failure', :to => 'sessions#failure', via:[:post, :get]
 	get '/logout', :to => 'sessions#destroy'
+	
+	get '/test', :to => 'sessions#start'
 #resources :events
   get "events/index"
   get "events/show"
