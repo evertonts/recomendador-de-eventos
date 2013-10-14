@@ -11,7 +11,7 @@ class ParserFolha
 	def parse()
 	  html = Nokogiri::HTML.parse(open(@url), nil, 'iso-8859-1')
 	  html.css('#roteiro > .element').each do |article|
-			event = Event.find_or_create_by_id article.css('h1 a').first.attributes['href'].value
+			event = Event.find_or_create_by_url article.css('h1 a').first.attributes['href'].value
       event.title = article.css('h1 a').first.content.strip
       event.location = article.css('.servico').first.content.strip
       event.description = article.css('.editorial').first.content.strip
