@@ -33,6 +33,10 @@ gem 'execjs'
 gem 'therubyracer'
 
 gem 'sidekiq'
+# gems para o facebook
+gem 'koala'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
