@@ -6,7 +6,7 @@ RecomendadorEventos::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'events#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -59,7 +59,7 @@ RecomendadorEventos::Application.routes.draw do
 
 
   # Exemplo de chamada usando o curl
-  # curl -X PUT -d 'url=http://catracalivre.com.br/feed' http://localhost:3000/repositories/catraca_livre/fetch_and_parse
+  # curl -X PUT -d '' http://localhost:3000/repositories/catraca_livre/fetch_and_parse
   put 'repositories/:selector/fetch_and_parse', to: 'repositories#fetch_and_parse', defaults: { format: 'json' }
 
 end

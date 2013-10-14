@@ -4,20 +4,9 @@ require 'date'
 
 class ParserFolha
 	
-	def initialize(redis)
+	def initialize()
 		@url = 'http://tools.folha.com.br/print?site=guia&url=http%3A%2F%2Fguia1.folha.com.br%2Fbusca%2Fshows%2F%3Fq%3D'
-	  @redis = redis
-		@redis_key = 'folha_last_success'
 	end
-
-  def blocked()
-    date = @redis.get(@redis_key)
-    not date.nil? and (Date.today - Date.parse(date)).to_i > 0
-  end
-
-  def update_redis()
-    @redis.set(@redis_key, Date.today)
-  end
 
 	def parse()
 	  html = Nokogiri::HTML.parse(open(@url), nil, 'iso-8859-1')
@@ -29,7 +18,6 @@ class ParserFolha
       #tags = article.css('h1 span b').first.content.strip
       event.save!
     end
-    self.update_redis
 	end
 end
 

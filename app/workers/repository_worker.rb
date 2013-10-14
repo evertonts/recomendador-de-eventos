@@ -1,14 +1,13 @@
 require 'parser_catraca_livre'
 require 'parser_uol'
 require 'parser_folha'
-require 'redis'
+require 'parser_visite_sp'
 require 'date'
 
 class RepositoryWorker
   include Sidekiq::Worker
 
   def initialize()
-    @redis = Redis.new
   end
 
   def perform(selector)
@@ -19,8 +18,9 @@ class RepositoryWorker
       ParserUol
     when 'folha'
       ParserFolha
-    end.new @redis
-    return if parser.blocked
+    when 'visite_sp'
+    	ParserVisiteSP
+    end.new
     parser.parse
   end
 end
