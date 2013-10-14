@@ -4,17 +4,15 @@
 
 <table >
   <tr>
-  	<th>ID</th>
     <th>Titulo</th>
     <th>Localizacao</th>
-    <th>Descricao</th>
+    <th>Data</th>
   </tr>
   <% @events.each do |event| %>
     <tr>
-    	<td><%= event.id %></td>
-      <td><%= event.title %></td>
+      <td><%= link_to event.title, event.url, :target => "_blank"  %></a></td>
       <td><%= event.location                           %></td>
-      <td><%= event.description                             %></td>
+      <td><%= event.date                             %></td>
     </tr>
   <% end %>
 </table>
