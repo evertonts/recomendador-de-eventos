@@ -4,8 +4,9 @@ require 'nokogiri'
 
 class ParserTimeOut
 	
-	def initialize(url = "http://www.timeout.com.br/sao-paulo/xmlapi/public")
-		@url = url
+	def initialize()
+		@url = "http://www.timeout.com.br/sao-paulo/xmlapi/public"
+		
 	end
 	
 	def parse()

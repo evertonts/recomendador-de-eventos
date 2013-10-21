@@ -21,7 +21,7 @@ class ParserUol
       rescue
         # nada faz
       end
-      event.save
+      event.save!
     end
 	end
 	
